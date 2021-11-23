@@ -12,6 +12,7 @@ This is a collections of functions that allow you to view, and check prefix-list
 
 Functions:
 -----------
+- get_prefix_list(ip, port, username, password)
 - view_prefix_list(prefix_lists)
 - find_prefix(prefix_lists:list, prefix:str)
 - check_proposed_overlapping(prefix_lists, proposed_prefix, ge, le)
