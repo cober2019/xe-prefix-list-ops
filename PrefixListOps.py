@@ -257,7 +257,6 @@ if __name__ == '__main__':
     port = '443'
     
     prefix_list = get_prefix_list(ip, port, username, password)
-    print(prefix_list)
 
     try:
         view_prefix_list(prefix_list)
