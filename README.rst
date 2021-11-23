@@ -14,7 +14,7 @@ Functions:
 -----------
 - get_prefix_list(ip, port, username, password)
 - view_prefix_list(prefix_lists)
-- find_prefix(prefix_lists:list, prefix:str)
+- find_prefix(prefix_lists, prefix)
 - check_proposed_overlapping(prefix_lists, proposed_prefix, ge, le)
 - check_overlapping(prefix_lists)
 - find_prefix_in_rib(ip, port, username, password, prefix)
