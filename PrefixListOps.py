@@ -31,23 +31,27 @@ def _check_before_processing(caller:object) ->object:
 def get_prefix_list(ip:str, port:int, username:str, password:str) -> list:
     """Gets prefix-lists from device"""
 
+    auth = False
     prefix_data = [{'name': 'No Prefix-lists Found'}]
     asr_uri = f"https://{ip}:{port}/restconf/data/Cisco-IOS-XE-native:native/ip/prefix-list"
     csr_uri = f"https://{ip}:{port}/restconf/data/Cisco-IOS-XE-native:native/ip/prefix-lists"
 
     try:
         response = requests.get(asr_uri, headers=headers, verify=False, auth=(username, password))
-        
         if response.status_code == 204:
+            auth = True
             response = requests.get(csr_uri, headers=headers, verify=False, auth=(username, password))
             prefix_lists = json.loads(response.text)
             check_error = _check_api_error(prefix_lists)
-
             if check_error:
                 raise AttributeError
             else:
                 prefix_data = prefix_lists.get('Cisco-IOS-XE-native:prefix-lists', {}).get('prefixes')
+
+        elif response.status_code == 401:
+            auth = False
         else:
+            auth = True
             prefix_lists = json.loads(response.text)
             check_error = _check_api_error(prefix_lists)
         
@@ -59,7 +63,7 @@ def get_prefix_list(ip:str, port:int, username:str, password:str) -> list:
     except (JSONDecodeError, requests.exceptions.ConnectionError, requests.exceptions.InvalidURL,UnboundLocalError, AttributeError, TypeError) as e:
         pass
 
-    return prefix_data
+    return prefix_data, auth
 
 def _check_api_error(response:json) -> bool:
     """Check the rest reponse for error"""
@@ -171,11 +175,11 @@ def find_prefix(prefix_lists:list, prefix:str) -> None:
         for prefix_list in prefix_lists:
             for sequence in prefix_list['seq']:
                 if prefix == sequence.get("ip"):
-                    print(f"\nList: {prefix_list.get('name')}\n-------------------\nSeq: {sequence.get('no')} Prefix: {sequence.get('action')} {sequence.get('ip')}")
+                    print(f"\nList: {prefix_list.get('name')}\n-------------------\nSeq: {sequence.get('no')} Prefix: {sequence.get('action')} {sequence.get('ip')} {'ge: ' + str(sequence.get('ge', 'n/a')):<} {'le: ' + str(sequence.get('le', 'n/a')):<5}")
     else:
         for sequence in prefix_lists:
             if prefix == sequence.get("ip"):
-                print(f"\nList: {sequence.get('name')}\nSeq: {sequence.get('no')} Prefix: {sequence.get('action')} {sequence.get('ip')}")
+                print(f"\nList: {sequence.get('name')}\nSeq: {sequence.get('no')} Prefix: {sequence.get('action')} {sequence.get('ip')} {'ge: ' + str(sequence.get('ge', 'n/a')):<} {'le: ' + str(sequence.get('le', 'n/a')):<5}")
 
 
 @_check_before_processing

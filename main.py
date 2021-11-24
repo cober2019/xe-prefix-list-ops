@@ -44,11 +44,13 @@ def main_menu():
     password = input('Password: ')
     port = input('Port: ')
 
+    prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
 
-
-    menu_options(ip, port, username, password)
-    main_menu()
-
+    if not prefix_list[1]:
+        print('\nLogin Failed\n\n')
+        main_menu()
+    else:
+        menu_options(ip, port, username, password)
 
 if __name__ == '__main__':
 
