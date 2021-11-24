@@ -9,8 +9,10 @@ This is a program  that allows you to view, and check prefix-lists. **This progr
 - Propose a prefix and check it against the current lists
 - Find overlapping prefix in all prefix-lists
 
+
 YANG Models:
 ------------
+**RESTCONF REQUIRED!**
 
 - Cisco-IOS-XE-native:native/ip/prefix-list
 - Cisco-IOS-XE-native:native/ip/prefix-lists
