@@ -44,9 +44,9 @@ def main_menu():
     password = input('Password: ')
     port = input('Port: ')
 
-    prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
+    auth = PrefixListOps.get_prefix_list(ip, port, username, password)
 
-    if not prefix_list[1]:
+    if not auth[1]:
         print('\nLogin Failed\n\n')
         main_menu()
     else:
