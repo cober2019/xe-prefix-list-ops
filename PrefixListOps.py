@@ -100,7 +100,7 @@ def _compare_proposed_prefix_statements(sequence:dict, list_name:str, proposed_p
             _is_overlapping(proposed_cidrs, current_cidrs, sequence, list_name, sequence.get("ip"), proposed_prefix)
 
 
-def _compare_prefix_statements(parent_sequence:dcit, child_sequence:dict, list_name:str) -> None:
+def _compare_prefix_statements(parent_sequence:dict, child_sequence:dict, list_name:str) -> None:
     """Check for overlapping prefix statements in all list, all statements"""
 
     try:
@@ -226,7 +226,7 @@ def find_prefix(prefix_lists:list, prefix:str) -> None:
         for prefix_list in prefix_lists:
             for sequence in prefix_list['seq']:
                 if prefix == sequence.get("ip"):
-                    print(f"\nList: {prefix_list.get('name')}\n-------------------\nSeq: {sequence.get('no')}\Prefix: {sequence.get('action')} {sequence.get('ip')}")
+                    print(f"\nList: {prefix_list.get('name')}\n-------------------\nSeq: {sequence.get('no')} Prefix: {sequence.get('action')} {sequence.get('ip')}")
     else:
         for sequence in prefix_lists:
             if prefix == sequence.get("ip"):
@@ -248,21 +248,50 @@ def view_prefix_list(prefix_lists:list) -> None:
                 print(f"{sequence.get('name'):<25}{sequence.get('no'):<25} {sequence.get('action'):<25} {sequence.get('ip'):<25} {sequence.get('ge', ''):<25} {sequence.get('le', ''):<25}")
 
 
+def menu_options(ip:str, port:int, username:str, password:str) -> None:
+
+    selection = 0
+
+    while selection != '6':
+
+        selection = input('\n1. View Prefix-lists\n2. Find Prefix\n3. Check Overlapping, User Slected Prefix\n4. Check All List For Overlapping\n5. Find Prefix in RIB\n5. Back To Login\n\nSelection: ')
+
+        if selection == '1':
+            prefix_list = get_prefix_list(ip, port, username, password)
+            view_prefix_list(prefix_list)
+        elif selection == '2':
+            prefix_list = get_prefix_list(ip, port, username, password)
+            prefix = input('\nPrefix: \n')
+            find_prefix(prefix_list, prefix)
+        elif selection == '3':
+            prefix_list = get_prefix_list(ip, port, username, password)
+            prefix = input('\nPrefix: \n')
+            check_proposed_overlapping(prefix_list, prefix)
+        elif selection == '4':
+            prefix_list = get_prefix_list(ip, port, username, password)
+            check_overlapping(prefix_list)
+        elif selection == '5':
+            prefix = input('\nPrefix: \n')
+            find_prefix_in_rib(ip, port, username, password, prefix)
+        elif selection == '6':
+            main_menu()
+        else:
+            print('\nInvalid Selection\n')
+
+def main_menu():
+
+    ip = input('IP: ')
+    username = input('Username: ')
+    password = input('Password: ')
+    port = input('Port: ')
+
+    menu_options(ip, port, username, password)
+    main_menu()
+
+
 if __name__ == '__main__':
 
-
-    ip = 'sandbox-iosxe-latest-1.cisco.com'
-    username = 'developer'
-    password = 'C1sco12345'
-    port = '443'
-    
-    prefix_list = get_prefix_list(ip, port, username, password)
-
-    try:
-        view_prefix_list(prefix_list)
-    except TypeError as e:
-        print(e)
-
+    main_menu()
 
 
 
