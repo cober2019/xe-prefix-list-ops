@@ -1,7 +1,7 @@
 XE Prefix-List Ops
 ==================
 
-This is a program  that allows you to view, and check prefix-lists. **This program does not modify yuor device config**:
+This is a program  that allows you to view, and check prefix-lists. **This program does not modify your device config**:
 
 - View current prefix-lists
 - Find a prefix in the device prefix-list
