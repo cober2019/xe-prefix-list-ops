@@ -16,7 +16,7 @@ def _check_before_processing(caller:object) ->object:
     def wrapper(*args:list):
         #Check if if there are any prefixes in list. This is the data from the rest call
         if args[0]:
-            #Check arg(list) length. This tell what arguments to pass to the caller
+            #Check arg(list) length. This tells what arguments to pass to the caller
             if len(args) == 1:
                 return caller(args[0])
             elif len(args) == 2:
