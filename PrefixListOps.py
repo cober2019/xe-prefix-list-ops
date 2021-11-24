@@ -136,7 +136,7 @@ def _is_overlapping(proposed_cidrs:set, current_cidrs:set, sequence:dict, list_n
 
     try:
         if list(set(proposed_cidrs) & set(current_cidrs)):
-            print(f"{parent_prefix}: overlap detected in list {list_name}:  {'Seq:' + str(sequence.get('no'))} prefix {current_prefix}")
+            print(f"{parent_prefix}: overlap detected in list {list_name}:  {'Seq:' + str(sequence.get('no'))} prefix {current_prefix} {'ge: ' + str(sequence.get('ge', 'n/a')):<} {'le: ' + str(sequence.get('le', 'n/a')):<5}")
     except TypeError:
         pass
 
@@ -149,7 +149,7 @@ def _compare_to_child_asr(parnet:dict, parent_sequence:list, prefix_lists):
                 if parent_sequence.get("no") != child_sequence.get("no") and parnet.get("name") == child_list.get("name") and ipaddress.IPv4Network(parent_sequence.get('ip')).overlaps(ipaddress.IPv4Network(child_sequence.get("ip"))):
                     _compare_prefix_statements(parent_sequence, child_sequence, parnet.get("name"))
                     if child_sequence.get("ip") == parent_sequence.get("ip"):
-                        print(f"{'overlap detected in list'} {parnet.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')}\n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
+                        print(f"{'overlap detected in list'} {child_sequence.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')} {'ge: ' + str(parent_sequence.get('ge', 'n/a')):<} {'le: ' + str(parent_sequence.get('le', 'n/a')):<5} \n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
             except ValueError as e:
                 print(e)
 
@@ -162,7 +162,7 @@ def _compare_to_child_other(prefix_lists:dict, parent_sequence:list):
             if parent_sequence.get("no") != child_sequence.get("no") and parent_sequence.get("name") == child_sequence.get("name") and ipaddress.IPv4Network(parent_sequence.get('ip')).overlaps(ipaddress.IPv4Network(child_sequence.get("ip"))):
                 _compare_prefix_statements(parent_sequence, child_sequence, child_sequence.get("name"))
                 if child_sequence.get("ip") == parent_sequence.get("ip"):
-                    print(f"{'overlap detected in list'} {child_sequence.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')}\n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
+                    print(f"{'overlap detected in list'} {child_sequence.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')} {'ge: ' + str(parent_sequence.get('ge', 'n/a')):<} {'le: ' + str(parent_sequence.get('le', 'n/a')):<5} \n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
         except ValueError as e:
             print(e)
 
