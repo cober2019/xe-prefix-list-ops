@@ -17,9 +17,11 @@ def ge_le() -> tuple:
     return ge, le
 
 def menu_options(ip:str, port:int, username:str, password:str) -> None:
-
+    """Menu options"""
+    
+    #Use while loop so the user doesn't have to endter credentials unless using option 6
     selection = 0
-
+    
     while selection != '6':
 
         selection = input('\n1. View Prefix-lists\n2. Find Prefix\n3. Check Overlapping, User Selected Prefix\n4. Check All List For Overlapping\n5. Find Prefix in RIB\n6. Back To Login\n\nSelection: ')
