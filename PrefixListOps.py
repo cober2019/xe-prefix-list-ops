@@ -14,7 +14,9 @@ def _check_before_processing(caller:object) ->object:
     """Check for prefix-list length before processing the function."""
 
     def wrapper(*args:list):
+        #Check if if there are any prefixes in list. This is the data from the rest call
         if args[0]:
+            #Check arg(list) length. This tell what arguments to pass to the caller
             if len(args) == 1:
                 return caller(args[0])
             elif len(args) == 2:
@@ -31,7 +33,7 @@ def _check_before_processing(caller:object) ->object:
                     print(f'Invalid Network Address: {args[2]}')
         else:
             print('Prefix List Empty')
-
+    # return the caller
     return wrapper
 
 def get_prefix_list(ip:str, port:int, username:str, password:str) -> list:
