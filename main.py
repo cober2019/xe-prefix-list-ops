@@ -1,4 +1,5 @@
 import PrefixListOps
+import traceback
 
 
 def menu_options(ip:str, port:int, username:str, password:str) -> None:
@@ -53,8 +54,9 @@ if __name__ == '__main__':
 
     try:
         main_menu()
-    except BaseException as e:
-        print(f'Somethis Is Really Wrong: {e}')
+    except BaseException:
+        print(f'\n\n\nSomething Is Really Wrong. Please submit an issue with the following log:\n')
+        print(traceback.print_exc())
         main_menu()
     
 
