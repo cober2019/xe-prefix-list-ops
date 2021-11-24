@@ -10,11 +10,11 @@ This is a collections of functions that allow you to view, and check prefix-list
 - Find overlapping prefix in all prefix-lists
 
 
-Functions:
+Menu Options:
 -----------
-- get_prefix_list(ip, port, username, password)
-- view_prefix_list(prefix_lists)
-- find_prefix(prefix_lists, prefix)
-- check_proposed_overlapping(prefix_lists, proposed_prefix, ge, le)
-- check_overlapping(prefix_lists)
-- find_prefix_in_rib(ip, port, username, password, prefix)
+1. View Prefix-lists
+2. Find Prefix
+3. Check Overlapping, User Slected Prefix
+4. Check All List For Overlapping
+5. Find Prefix in RIB
+6. Back To Login
