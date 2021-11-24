@@ -16,6 +16,14 @@ YANG Models:
 - Cisco-IOS-XE-native:native/ip/prefix-lists
 - ietf-routing:routing-state
 
+Tested Devices:
+------------
+
+- ASR
+- CSR
+- ISR
+- CATALYST 3000 Series
+
 Menu Options:
 -------------
 1. View Prefix-lists
