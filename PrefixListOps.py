@@ -22,13 +22,13 @@ def _check_before_processing(caller:object) ->object:
                     ipaddress.IPv4Network(args[1])
                     return caller(args[0], args[1])
                 except ipaddress.AddressValueError:
-                    print(f'Invald Network Address: {args[1]}')
+                    print(f'Invalid Network Address: {args[1]}')
             elif len(args) == 4:
                 try:
-                    ipaddress.IPv4Network(args[2])
-                    return caller(args[0], args[1], args[3], args[4])
+                    ipaddress.IPv4Network(args[1])
+                    return caller(args[0], args[1], args[2], args[3])
                 except ipaddress.AddressValueError:
-                    print(f'Invald Network Address: {args[2]}')
+                    print(f'Invalid Network Address: {args[2]}')
         else:
             print('Prefix List Empty')
 
@@ -206,7 +206,7 @@ def check_overlapping(prefix_lists:list) -> None:
 
 
 @_check_before_processing
-def check_proposed_overlapping(prefix_lists:list, proposed_prefix:str, ge:int=None, le:int=None) -> None:
+def check_proposed_overlapping(prefix_lists:list, proposed_prefix:str, ge:int, le:int) -> None:
     """Checks to see if the proposed prefix overlaps with a current prefix statement"""
 
     if len(prefix_lists[0].keys()) == 2:
