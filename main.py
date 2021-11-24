@@ -7,7 +7,7 @@ def menu_options(ip:str, port:int, username:str, password:str) -> None:
     
     while selection != '6':
 
-        selection = input('\n1. View Prefix-lists\n2. Find Prefix\n3. Check Overlapping, User Selected Prefix\n4. Check All List For Overlapping\n5. Find Prefix in RIB\n6. Back To Login\n\nSelection: ')
+        selection = input('\n------------------\n1. View Prefix-lists\n2. Find Prefix\n3. Check Overlapping, User Selected Prefix\n4. Check All List For Overlapping\n5. Find Prefix in RIB\n6. Back To Login\n\nSelection: ')
 
         if selection == '1':
             prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
@@ -33,12 +33,17 @@ def menu_options(ip:str, port:int, username:str, password:str) -> None:
 
 def main_menu():
     
-    print('\nPrefix-List-Ops\n------------------\n')
+    print('\nPrefix-List-Ops\n')
     
-    ip = input('IP: ')
+    """    ip = input('IP: ')
     username = input('Username: ')
     password = input('Password: ')
-    port = input('Port: ')
+    port = input('Port: ')"""
+
+    ip = '192.168.152.20'
+    username = 'admin'
+    password = 'C!sco!@#'
+    port = '443'
 
     menu_options(ip, port, username, password)
     main_menu()
