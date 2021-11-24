@@ -1,7 +1,7 @@
 XE Prefix-List Ops
 ==================
 
-This is a collections of functions that allow you to view, and check prefix-lists:
+This is a collection of functions that allow you to view, and check prefix-lists:
 
 - View prefix-lists
 - Find a prefix in the device prefix-list
@@ -9,9 +9,15 @@ This is a collections of functions that allow you to view, and check prefix-list
 - Propose a prefix and check it against the current list
 - Find overlapping prefix in all prefix-lists
 
+YANG Models:
+------------
+
+- Cisco-IOS-XE-native:native/ip/prefix-list
+- Cisco-IOS-XE-native:native/ip/prefix-lists
+- ietf-routing:routing-state
 
 Menu Options:
------------
+-------------
 1. View Prefix-lists
 2. Find Prefix
 3. Check Overlapping, User Slected Prefix
