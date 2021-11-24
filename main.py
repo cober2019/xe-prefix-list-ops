@@ -64,7 +64,7 @@ def main_menu():
 
 
 if __name__ == '__main__':
-
+    #Call main menu. Add a catch for all exception. Just in case it wasnt caught elsewhere. No one like a crashing program
     try:
         main_menu()
     except BaseException as e:
