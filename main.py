@@ -48,6 +48,7 @@ def menu_options(ip:str, port:int, username:str, password:str) -> None:
             print('\nInvalid Selection\n')
 
 def main_menu():
+    """Get device credentials"""
     
     print('\nPrefix-List-Ops\n------------------\n')
     
