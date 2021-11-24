@@ -1,3 +1,5 @@
+"""Entry poing for prefix-list ops. Function for main menu"""
+
 import PrefixListOps
 
 def ge_le() -> tuple:
