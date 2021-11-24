@@ -34,10 +34,14 @@ Menu Options:
 6. Back To Login
 
 **View All Lists**
+
 .. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-op-1.PNG
 
+**Find a Proposed Prefix**
+
+.. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-ops-3.PNG
+
 **Find a Prefix**
+
 .. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-ops-2.PNG
 
-**Find a Proposed Prefix**
-.. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-ops-3.PNG
