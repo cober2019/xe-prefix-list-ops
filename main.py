@@ -13,18 +13,18 @@ def menu_options(ip:str, port:int, username:str, password:str) -> None:
 
             if selection == '1':
                 prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
-                PrefixListOps.view_prefix_list(prefix_list)
+                PrefixListOps.view_prefix_list(prefix_list[0])
             elif selection == '2':
                 prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
                 prefix = input('\nPrefix: ')
-                PrefixListOps.find_prefix(prefix_list, prefix)
+                PrefixListOps.find_prefix(prefix_list[0], prefix)
             elif selection == '3':
                 prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
                 prefix = input('\nPrefix: ')
-                PrefixListOps.check_proposed_overlapping(prefix_list, prefix)
+                PrefixListOps.check_proposed_overlapping(prefix_list[0], prefix)
             elif selection == '4':
                 prefix_list = PrefixListOps.get_prefix_list(ip, port, username, password)
-                PrefixListOps.check_overlapping(prefix_list)
+                PrefixListOps.check_overlapping(prefix_list[0])
             elif selection == '5':
                 prefix = input('\nPrefix: ')
                 PrefixListOps.find_prefix_in_rib(ip, port, username, password, prefix)
