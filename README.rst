@@ -1,12 +1,12 @@
 XE Prefix-List Ops
 ==================
 
-This is a collection of functions that allow you to view, and check prefix-lists:
+This is a program  that allows you to view, and check prefix-lists. **This program does not modify yuor device config**:
 
-- View prefix-lists
+- View current prefix-lists
 - Find a prefix in the device prefix-list
 - Find a prefix in the routing table
-- Propose a prefix and check it against the current list
+- Propose a prefix and check it against the current lists
 - Find overlapping prefix in all prefix-lists
 
 YANG Models:
