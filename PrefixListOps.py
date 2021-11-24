@@ -14,9 +14,7 @@ def _check_before_processing(caller:object) ->object:
     """Check for prefix-list length before processing the function."""
 
     def wrapper(*args:list):
-        #Check if if there are any prefixes in list. This is the data from the rest call
         if args[0]:
-            #Check arg(list) length. This tells what arguments to pass to the caller
             if len(args) == 1:
                 return caller(args[0])
             elif len(args) == 2:
@@ -33,7 +31,7 @@ def _check_before_processing(caller:object) ->object:
                     print(f'Invalid Network Address: {args[2]}')
         else:
             print('Prefix List Empty')
-    # return the caller
+
     return wrapper
 
 def get_prefix_list(ip:str, port:int, username:str, password:str) -> list:
@@ -145,13 +143,14 @@ def _is_overlapping(proposed_cidrs:set, current_cidrs:set, sequence:dict, list_n
 
 def _compare_to_child_asr(parnet:dict, parent_sequence:list, prefix_lists):
     """search prefix list and compare to the callers sequences. ASR device"""
+    
     for child_list in prefix_lists:
         for child_sequence in child_list['seq']:
             try:
                 if parent_sequence.get("no") != child_sequence.get("no") and parnet.get("name") == child_list.get("name") and ipaddress.IPv4Network(parent_sequence.get('ip')).overlaps(ipaddress.IPv4Network(child_sequence.get("ip"))):
                     _compare_prefix_statements(parent_sequence, child_sequence, parnet.get("name"))
                     if child_sequence.get("ip") == parent_sequence.get("ip"):
-                        print(f"{'overlap detected in list'} {child_sequence.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')} {'ge: ' + str(parent_sequence.get('ge', 'n/a')):<} {'le: ' + str(parent_sequence.get('le', 'n/a')):<5} \n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
+                        print(f"{'overlap detected in list'} {parnet.get('name')}\n {'':>10}Seq: {parent_sequence.get('no')} Prefix: {parent_sequence.get('ip')} {'ge: ' + str(parent_sequence.get('ge', 'n/a')):<} {'le: ' + str(parent_sequence.get('le', 'n/a')):<5} \n {'Seq:':>35} {child_sequence.get('no')} prefix {child_sequence.get('ip')} {'ge: ' + str(child_sequence.get('ge', 'n/a')):<} {'le: ' + str(child_sequence.get('le', 'n/a')):<5} ")
             except ValueError as e:
                 print(e)
 
