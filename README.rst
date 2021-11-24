@@ -28,7 +28,7 @@ Menu Options:
 -------------
 1. View Prefix-lists
 2. Find Prefix
-3. Check Overlapping, User Slected Prefix
+3. Check Overlapping, User Selected Prefix
 4. Check All List For Overlapping
 5. Find Prefix in RIB
 6. Back To Login
