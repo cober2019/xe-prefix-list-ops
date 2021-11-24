@@ -35,15 +35,10 @@ def main_menu():
     
     print('\nPrefix-List-Ops\n')
     
-    """    ip = input('IP: ')
+    ip = input('IP: ')
     username = input('Username: ')
     password = input('Password: ')
-    port = input('Port: ')"""
-
-    ip = '192.168.152.20'
-    username = 'admin'
-    password = 'C!sco!@#'
-    port = '443'
+    port = input('Port: ')
 
     menu_options(ip, port, username, password)
     main_menu()
@@ -51,7 +46,11 @@ def main_menu():
 
 if __name__ == '__main__':
 
-    main_menu()
+    try:
+        main_menu()
+    except BaseException as e:
+        print(f'Somethis Is Really Wrong: {e}')
+        main_menu()
     
 
 
