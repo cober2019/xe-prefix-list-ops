@@ -32,3 +32,7 @@ Menu Options:
 4. Check All List For Overlapping
 5. Find Prefix in RIB
 6. Back To Login
+
+.. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-op-1.PNG
+.. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-ops-2.PNG
+.. image:: https://github.com/cober2019/xe-prefix-list-ops/blob/main/images/prefix-ops-3.PNG
